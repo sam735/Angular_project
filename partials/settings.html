@@ -1,0 +1,16 @@
+<div>
+  <div class="settingsContainer">
+    <uib-tabset>
+      <uib-tab heading="{{item.Name}}" ng-repeat="item in settingsVM.settings">
+        <div class="settingsContainer">
+            <p class="form-group">
+              <div ng-if="item.Schema">
+                <json-editor schema="item.Schema" startval="item.Value" disable_properties="true" on-change="settingsVM.onSettingsChanged(item.Name, item.Qualifier, $editorValue)"></json-editor>  
+              </div>
+            </p>      
+            <p><button class="btn btn-primary" ng-click="settingsVM.saveSettings(item.Name, item.Qualifier, $event)">Save</button</p>    
+        </div>
+      </uib-tab>
+    </uib-tabset>
+  </div>
+</div>

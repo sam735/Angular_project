@@ -1,0 +1,51 @@
+
+<div id="content-main">
+    <div class="container">
+        <div class="login-form-container">
+            <div class="clearfix">
+                <img src="images/login.jpg" alt="Jiva" class="login-medical-staff"  />
+            </div>
+            <div class="clearfix">
+                <form name = "myForm" novalidate ng-submit = "loginVM.chkLogin()" novalidate>
+                    <div class="form-inline">
+                        <div class="form-group">
+                            <label class="sr-only">User Name</label>
+                            <input type="text" class="form-control" placeholder="User Name" ng-model = "loginVM.loginObj.userName">
+                        </span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="sr-only">Password</label>
+                            <input type="password" class="form-control" placeholder="Password" ng-model = "loginVM.loginObj.userPass">
+                        </div>
+                        <button class="btn btn-success">
+                            Login
+                        </button>
+
+                        <div class="clearfix"></div>
+                        <div class="login-page-error-container" ng-hide ="loginVM.loginStatus">
+                            Login Failed !
+                            Your username and/or password may be incorrect
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="clearfix padding-top-12px padding-bottom-12px">
+                <div class="pull-left">
+                    If you are a new user please <a href="#">Register Here</a>
+                </div>
+                <div class="pull-right">
+                    <a href="#">Forgot Password ?</a>
+                </div>
+            </div>
+            <div class="clearfix margin-top-5px font-color-777777">
+                By logging onto this site, you agree that you have read and accept the <a href="#">Terms and Conditions</a> of use for this website.
+            </div>
+            <div class="clearfix margin-top-5px font-color-777777">
+                &copy; 2015 ZeOmega. Inc - All Rights Reserved
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ui-view></div>

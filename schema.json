@@ -1,0 +1,66 @@
+{
+    "title" : "Log Settings",
+    "type": "object",
+    "properties": {
+        "LogSettings" :{
+            "title":"Log Settings",
+            "type" : "object",
+            "properties":{
+                "filePath": {
+                  "type": "string",
+                  "minLength": 4,
+                  "title" : "File Path"
+                },
+                "logName": {
+                  "type": "string",
+                  "default": "DB Logs",
+                  "title" : "Log Name",
+                  "minimum": 1,
+                  "maximum": 99
+                },
+                "configuredLevel": {
+                  "type": "string",
+                  "format": "color",
+                  "title": "Configured Levels",
+                  "default": "#ffa500"
+                }
+            }
+        },
+        "DBSettings":{
+            "title" : "DB Settings",
+            "type"  : "array",
+            "properties":{
+                "Name": {
+                    "type": "string",
+                    "title": "Name",
+                    "required": true,
+                    "minLength": 1
+                },
+                "DBServer": {
+                    "type": "string",
+                    "title": "DBServer",
+                    "required": true,
+                    "minLength": 1
+                },
+                "DBName": {
+                    "type": "string",
+                    "title": "DBName",
+                    "required": true,
+                    "minLength": 1
+                },
+                "Username":{
+                    "type": "string",
+                    "title": "Username",
+                    "required": true,
+                    "minLength": 1
+                },
+                "Password":{
+                    "type": "string",
+                    "title": "Password",
+                    "required": true,
+                    "minLength": 1
+                }, 
+            }
+        }
+    }
+}

@@ -1,0 +1,27 @@
+<div class="row;list-group-item ng-scope">
+		<div class="pull-right">
+	    	<p>Created on: {{viewModel.app.CreatedOn}}</p>
+	    	<p>Last Modified On: {{viewModel.app.LastModifiedOn}}</p>
+	    	<p>Last Modified By: {{viewModel.app.LastModifiedBy}}</p>
+		</div>
+		<div>
+		    <a><h1>{{viewModel.app.DisplayName}}</h1></a>
+		    <p>{{viewModel.app.Description}}</p>
+		</div>
+		<hr>
+	</div>
+	<div class="settingsContainer">
+	    <uib-tabset>
+		    <uib-tab heading="{{item.Name}}" ng-repeat="item in viewModel.appSettings" ng-if="item.Qualifier == viewModel.app.Name">
+		        <div class="settingsContainer">
+		            <p class="form-group">
+		              <div>
+		                <json-editor schema="item.Schema" startval="item.Value" disable_properties="true" on-change="viewModel.onSettingsChanged(item.Name, item.Qualifier, $editorValue)"></json-editor>  
+		              </div>
+		            </p>          
+		            <p><button class="btn btn-primary" ng-click="viewModel.saveSettings(item.Name, item.Qualifier, $event)">Save</button></p>
+		        </div>
+		    </uib-tab>
+	    </uib-tabset>
+	</div>
+

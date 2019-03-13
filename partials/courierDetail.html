@@ -1,0 +1,19 @@
+<div class="panel-heading border-1px"><strong><h4>Courier Summary</h4></strong></div>
+<div class="courier-summery" ng-style="{'height':logSearchVm.courierDivHeight}">
+  <div>
+    <div class="col-sm-3 table-thumbnail log-trace-padding-0px"><h4>Component</h4></div>
+    <div class="col-sm-3 table-thumbnail log-trace-padding-0px"><h4>Stage</h4></div>
+    <div class="col-sm-2 table-thumbnail log-trace-padding-0px"><h4>Status</h4></div>
+    <div class="col-sm-4 table-thumbnail log-trace-padding-0px"><h4>Last Tracked</h4></div>
+  </div>
+  <div ng-repeat = "detail in logSearchVm.courierDetails.data">
+    <div class="col-sm-3 table-thumbnail log-trace-padding-0px"><strong>{{detail.Component}}</strong></div>
+    <div class="col-sm-3 table-thumbnail log-trace-padding-0px"><strong>{{detail.Stage}}</strong></div>
+    <div class="col-sm-2 table-thumbnail log-trace-padding-0px"><strong>{{detail.Status}}</strong></div>
+    <div class="col-sm-4 table-thumbnail log-trace-padding-0px"><strong>{{detail.LastTrackedOn}}</strong></div>
+    <div class="table-thumbnail log-trace-padding-0px" ng-if = "detail.Remarks"><mark><strong>Remarks:{{detail.Remarks}}</strong></mark></div>
+  </div>
+  <div ng-if = "!logSearchVm.courierDetails.data[0]">
+    <div class="table-thumbnail log-trace-padding-0px"><h4><strong>No details Found regarding this courier</strong></h4></div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+	<div>   
+  		<h3>Add a New Application</h3>
+	  	<div class="settingsContainer">
+		  	<form>
+			   	<div>
+				  	<label>Application Name<br></label>
+				  	<input type="text" name="appName" class="form-control  ng-pristine ng-valid ng-empty ng-touched"  ng-model = "appsVM.newAppContainer.Name" required><br>
+				</div>
+				<div>
+				  	<label>Display Name<br></label>
+				  	<input type="text" name="appDisplay" class="form-control  ng-pristine ng-valid ng-empty ng-touched" ng-model ="appsVM.newAppContainer.DisplayName" required><br>
+				</div>
+				<div>
+				  	<label>Description<br></label>
+				  	<input type="text" name="appDesc" class="form-control  ng-pristine ng-valid ng-empty ng-touched" ng-model ="appsVM.newAppContainer.Description" required><br>
+				</div>
+
+				<button class="btn btn-primary" type ="submit" ng-click = "appsVM.addNewApp();" value ="Submit">Submit</button>
+				<button class="btn btn-primary" type="reset" value="Reset">Reset</button>
+				<button class="btn btn-primary" type = "button" ng-click ="appsVM.cancel()">Cancel</button>
+			</form>
+		</div>
+	</div>

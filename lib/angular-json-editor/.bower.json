@@ -1,0 +1,37 @@
+{
+  "name": "angular-json-editor",
+  "version": "0.3.1",
+  "authors": [
+    "Rodik Hanukaev <rodik@rodik.me>",
+    "Topaz Bar <topaz1008@gmail.com>"
+  ],
+  "description": "angular.js directive for jdorn's json-editor",
+  "license": "MIT",
+  "main": "src/angular-json-editor.js",
+  "keywords": [
+    "angular",
+    "directive",
+    "json-editor",
+    "form",
+    "schema"
+  ],
+  "ignore": [
+    "bower_components",
+    "node_modules"
+  ],
+  "dependencies": {
+    "json-editor": "^0.7.28",
+    "angular": "1.*"
+  },
+  "homepage": "https://github.com/rodikh/angular-json-editor",
+  "_release": "0.3.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.3.1",
+    "commit": "9e41b88abc38de3ab818f54b892dc126047067d0"
+  },
+  "_source": "https://github.com/rodikh/angular-json-editor.git",
+  "_target": "^0.3.1",
+  "_originalSource": "angular-json-editor",
+  "_direct": true
+}

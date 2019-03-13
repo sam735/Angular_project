@@ -1,0 +1,22 @@
+<div class="container thumbnail">
+	<div ng-cloak>   
+  		<h3>Create Pgp key</h3>
+	  	<div class="settingsContainer">
+		  	<form>
+			   	<div>
+				  	<label>User Name<br></label>
+				  	<input type="text"  class="form-control  ng-pristine ng-valid ng-empty ng-touched" ng-model = "appsVM.createPgpDetails.UserName" required><br>
+				</div>
+				<div>
+				  	<label>Password<br></label>
+				  	<input type="Password" class="form-control  ng-pristine ng-valid ng-empty ng-touched" ng-model = "appsVM.createPgpDetails.Password" required><br>
+				</div>
+				<button class="btn btn-primary"  ng-click = "appsVM.createPgp()">Create</button>
+			</form>
+		</div>
+	</div>
+	<div class="text-center" ng-if ="appsVM.error">
+      <h5><strong>{{appsVM.error.status}},{{appsVM.error.statusText}}</strong></h5>
+      <h6><strong>Please Try After Some Time</strong></h6>
+    </div>
+</div>

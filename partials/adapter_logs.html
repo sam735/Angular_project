@@ -1,0 +1,116 @@
+<div class="col-sm-9 log-trace-padding-0px">
+  <div class="col-sm-5 log-trace-padding-0px">
+    <div class="panel-heading border-1px"><strong><h4>Search result</h4></strong></div>
+    <div class="text-center" ng-if = "logSearchVm.logs.error">
+      <h5><strong>{{logSearchVm.logs.error.status}},{{logSearchVm.logs.error.statusText}}</strong></h5>
+      <h6><strong>Please Try After Some Time</strong></h6>
+    </div>
+    <div class="fixed" ng-style="{'height':logSearchVm.courierDivHeight,'scrollTop':0}"  when-scrolled = "logSearchVm.nextPage()">
+      <div class="list-group"ng-repeat="courier in logSearchVm.logs.couriers">
+        <a  href="javascript:void(0)" class="list-group-item list-group-item-action flex-column align-items-start" ng-click = "logSearchVm.getCourierDetails(courier.Id)" id="courierDiv{{$index}}" ui-sref = "header.Home.Monitoring.LogSearch.LogDetails({id:courier.Id})">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">
+              Courier Name: {{courier.Name}}
+            </h5>
+            <h6><strong>Registered Time:{{courier.RegisteredOn}}</strong></h6>
+          </div>
+          <p class="mb-1">Courier Source: {{courier.Source}}</p>
+          <small>Courier Type: {{courier.Type}}</small>
+        </a>
+      </div>
+      <div class = "list-group" ng-if = "logSearchVm.noMoreCourier">
+        <h5>No more  courier to show</h5>
+      </div>
+      <div class = "list-group" ng-if = "logSearchVm.logs.courierCount == 0">
+        <h5>No courier found</h5>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-7 log-trace-padding-0px">
+    <div ui-view></div>
+  </div>
+</div>
+
+<div class = "col-sm-3 log-filter-padding">
+  <div class="search-thumbnail">
+    <h4 style="margin: 0px;">
+      Filters <button class="btn btn-primary pull-right" ng-click = "logSearchVm.getCourier()">Search</button>
+    </h4>
+    <hr>
+    <form novalidate ng-style="{'height':logSearchVm.courierDivHeight}">
+      <p class="form-group">
+        <label>Courier Type</label>
+        <input type="text"class="form-control" ng-model = "logSearchVm.courier.courierType" ng-change = "logSearchVm.setCurrentPage()" >
+      </p>
+      <p class="form-group">
+        <label>Courier Name</label>
+        <input type="text"class="form-control " ng-model = "logSearchVm.courier.courierName" ng-change = "logSearchVm.setCurrentPage()" >
+      </p>
+
+      <label>From date</label>
+      <p class="input-group">
+        <input type="text" class="form-control" uib-datepicker-popup="yyyy-MM-dd" ng-model="logSearchVm.courier.fromDate" is-open="logSearchVm.expandDatePicker.expandFormDatePicker" datepicker-options="datepickerOptions" close-text="Close" alt-input-formats="altInputFormats" ng-change = "logSearchVm.makeActiveFromHrs();logSearchVm.setCurrentPage()"/>
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default" ng-click="logSearchVm.openDetPicker('fromDate')">
+            <i class="glyphicon glyphicon-calendar"></i>
+          </button>
+        </span>
+      </p>
+      <label>To date</label>
+      <p class="input-group">
+        <input type="text" class="form-control" uib-datepicker-popup="yyyy-MM-dd" ng-model="logSearchVm.courier.toDate" is-open="logSearchVm.expandDatePicker.expandToDatePicker" datepicker-options="datepickerOptions" close-text="Close" alt-input-formats="altInputFormats" ng-change = "logSearchVm.makeActiveFromHrs();logSearchVm.setCurrentPage()"/>
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default" ng-click="logSearchVm.openDetPicker('toDate')">
+              <i class="glyphicon glyphicon-calendar"></i>
+          </button>
+        </span>
+      </p>
+      <label for="exampleFormControlSelect1"><strong>From Time in Hrs</strong></label>
+      <select id="inputState" class="form-control" ng-model = "logSearchVm.fromHrs" ng-options = "hrs for hrs in logSearchVm.hrsArray" ng-disabled = "logSearchVm.disableFromHrs">
+        <option selected>Hrs</option>
+      </select>
+      <label for="exampleFormControlSelect1"><strong>From Time in Mins</strong></label>
+      <select id="inputState" class="form-control" ng-model = "logSearchVm.fromMins" ng-options = "mins for mins in logSearchVm.minsArray" ng-disabled = "logSearchVm.disableFromHrs">
+        <option selected>Mins</option>
+      </select>
+      <label for="exampleFormControlSelect1"><strong>To Time in Hrs</strong></label>
+      <select id="inputState" class="form-control" ng-model = "logSearchVm.toHrs" ng-options = "hrs for hrs in logSearchVm.hrsArray" ng-disabled = "logSearchVm.disableToHrs">
+      </select>
+      <label for="exampleFormControlSelect1"><strong>To Time in Mins</strong></label>
+      <select id="inputState" class="form-control" ng-model = "logSearchVm.toMins" ng-options = "mins for mins in logSearchVm.minsArray" ng-disabled = "logSearchVm.disableToHrs">
+      </select>
+      <uib-accordion>
+        <div uib-accordion-group is-open="false" heading="More Filters">
+          <div class="col-sm-6 log-filter-padding">
+            <label ><strong>Field</strong></label>
+            <p class="input-group" ng-repeat = "field in logSearchVm.courier.metaData">
+              <select class="form-control" ng-model="field.metaData">
+                <option>MemberId</option>
+                <option>VisitNumber</option>
+              </select>
+              <br>
+            </p>
+          </div>
+
+          <div class="col-md-6 log-filter-padding">
+            <label for="example-text-input"><strong>Value</strong></label>
+            <p class="input-group" ng-repeat = "field in logSearchVm.courier.metaData">
+               <input type="text" class="form-control" placeholder="value" ng-model = "field.value">
+               <br>
+            </p>
+          </div> 
+          <br>
+          <button type="button" class="btn btn-default" ng-click = "logSearchVm.addField()">
+            Add
+          </button>
+          <button type="submit" class="btn btn-default" ng-if = "logSearchVm.showDeleteButton" ng-click = "logSearchVm.deleteField()">
+            Delete
+          </button>
+        </div>
+      </uib-accordion>
+      <!-- <br> -->
+      <!-- <button class="btn btn-primary" ng-click = "logSearchVm.getCourier()">Search</button> -->
+    </form>
+  </div>
+</div>
+

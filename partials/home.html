@@ -1,0 +1,14 @@
+<div>
+    <ul class="list-group">
+        <li class="list-group-item"><strong>Today's Statistics</strong></li>
+        <li class="list-group-item" ng-repeat="stat in ctrl.model.StatsSnapshot.StatsBasedOnStatus">{{stat.Status}} <span class="badge {{stat.Status}}">{{stat.Count}}</span></li> 
+    </ul>
+
+    <ul class="list-group">
+        <li class="list-group-item"><strong>Last 5 messages</strong></li>
+        <li class="list-group-item" ng-repeat="courier in ctrl.model.RecentCouriers"> {{courier.Type}} | {{courier.Name}} | {{courier.Direction}}</span></li> 
+    </ul>
+    
+</div>
+
+

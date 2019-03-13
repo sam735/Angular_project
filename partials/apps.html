@@ -1,0 +1,39 @@
+<div class="pageContainer">
+  <div class="col-md-2 list-group console-panel right-boder">
+      <form role="search">
+          <div class="input-group add-on">
+            <input class="form-control console-search" placeholder="Search Apps" name="srch-term" id="srch-term" type="text">
+            <div class="input-group-btn console-search">
+              <button class="btn btn-default console-search" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+          </div>
+      </form>
+    <li class="list-group-item console-menu" ng-class="{disabled: !app.IsActive, active:appsVM.isSelectedApp(app.Id)}" ng-repeat="app in appsVM.apps">
+      <a class="header" ui-sref="header.Home.Apps.AppDetails({id:app.Id})" >
+        <font size="4"><b>{{app.DisplayName}}</b></font>
+      </a>
+      <div class="pull-right">
+
+        <div class="btn-group" uib-dropdown is-open="status.isopen">
+          <button id="channel-action-button" class="btn btn-default" uib-dropdown-toggle ng-disabled="disabled" type="button"><i class="glyphicon glyphicon-cog"></i></button>
+          <ul class="dropdown-menu-" uib-dropdown-menu role="menu" aria-labelledby="channel-action-button">
+            <li role="menuitem"><a href="javascript:void(0)" ng-click = "appsVM.DirectToPgpKeyView(app.Id)">Create Pgp Key</a></li>
+            <li role="menuitem" ng-switch on="app.IsActive">
+              <a ng-switch-when="false" href="javascript:void(0)" ng-click = "appsVM.toggleActivation(app.Id, app.IsActive)">Activate App</a>
+              <a ng-switch-default href="javascript:void(0)" ng-click = "appsVM.toggleActivation(app.Id, app.IsActive)">Deactivate App</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <p>{{app.Description}}</p>
+    </li>
+    <br>
+    <div class="col-md-2">
+      <button class="btn btn-primary" ng-click ="appsVM.addNewAppRoute()">New</button>
+    </div> 
+  </div>
+   <div class="col-md-10 console-panel">
+    <div ui-view></div>
+  </div>
+</div>
+

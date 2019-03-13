@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for controller\loginController.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">controller/</a> loginController.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">58.14% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>25/43</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">83.33% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>5/6</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">50% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>5/10</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">58.14% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>25/43</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line medium'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">define(['app','loginService'],function(app,loginService){
+	app.controller('loginController',['$scope','$state','$timeout','loginService','$http',
+							'$cookies',function($scope,$state,$timeout,loginService,$http,$cookies){
+&nbsp;
+&nbsp;
+		var ctrl = this;
+		ctrl.loginStatus = true;
+		ctrl.loginObj = {
+			'userName':undefined,
+			'userPass':undefined
+		};
+		<span class="missing-if-branch" title="if path not taken" >I</span>if($cookies.getObject('validationInformatin')){
+<span class="cstat-no" title="statement not covered" >			ctrl.hideLogoutButton = true;</span>
+		}
+		else{
+			ctrl.hideLogoutButton = false;
+		}
+		ctrl.waitForLoginToken = function(){
+			$timeout(
+<span class="fstat-no" title="function not covered" >				function(){</span>
+<span class="cstat-no" title="statement not covered" >					ctrl.promise</span>
+					.then(<span class="fstat-no" title="function not covered" >function(resp){</span>
+<span class="cstat-no" title="statement not covered" >						ctrl.loginStatus = true;</span>
+<span class="cstat-no" title="statement not covered" >						ctrl.storeToken(resp.data.access_token,resp.data.expires_in);</span>
+<span class="cstat-no" title="statement not covered" >						$state.go('header.Home');</span>
+<span class="cstat-no" title="statement not covered" >						ctrl.hideLogoutButton = true;</span>
+<span class="cstat-no" title="statement not covered" >						loginService.setDefaultHeader();</span>
+					},<span class="fstat-no" title="function not covered" >function(error){</span>
+<span class="cstat-no" title="statement not covered" >						ctrl.loginStatus = false;</span>
+<span class="cstat-no" title="statement not covered" >						$state.go('header.login');</span>
+					})
+				},1000);
+		};
+&nbsp;
+		ctrl.chkLogin = function(){
+&nbsp;
+			if(ctrl.loginObj['userName'] == undefined){
+				window.alert('Please enter user name');
+				ctrl.reset();
+				return;
+			}
+&nbsp;
+			else if(ctrl.loginObj['userPass'] == undefined){
+				window.alert('please enter password');
+				ctrl.reset();
+				return;
+			}
+&nbsp;
+			ctrl.promise = loginService.getToken(ctrl.loginObj);
+			ctrl.waitForLoginToken();
+                
+	}
+&nbsp;
+	ctrl.reset = function(){
+		ctrl.loginObj['userName'] = undefined;
+		ctrl.loginObj['userPass'] = undefined;
+	}
+&nbsp;
+	ctrl.logOut = <span class="fstat-no" title="function not covered" >function(){</span>
+<span class="cstat-no" title="statement not covered" >		$cookies.remove('validationInformatin');</span>
+<span class="cstat-no" title="statement not covered" >		ctrl.hideLogoutButton = false;</span>
+<span class="cstat-no" title="statement not covered" >		ctrl.reset();</span>
+<span class="cstat-no" title="statement not covered" >		$state.go('header.logout');</span>
+	}
+&nbsp;
+	ctrl.storeToken = <span class="fstat-no" title="function not covered" >function(accessToken,expiresIn){</span>
+<span class="cstat-no" title="statement not covered" >		var today = new Date();</span>
+<span class="cstat-no" title="statement not covered" >    	var expiresValue = new Date(today);</span>
+<span class="cstat-no" title="statement not covered" >    	var validationInformatin = {</span>
+							'userName':ctrl.loginObj.userName,
+							'access_token':accessToken,
+							'expires_in':expiresIn
+						};
+<span class="cstat-no" title="statement not covered" >		expiresValue.setSeconds(today.getSeconds() + expiresIn);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		$cookies.putObject('validationInformatin', validationInformatin, {'expires' : expiresValue});	</span>
+	}
+	
+	}]);
+});</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Jul 24 2018 16:14:04 GMT+0530 (India Standard Time)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

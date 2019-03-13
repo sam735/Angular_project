@@ -1,0 +1,13 @@
+<div>
+
+    <nav class="col-md-1 w3-sidebar">
+        <uib-tabset active="activePill" vertical="true" type="pills">
+            <li  ui-sref-active="active"> <a href="javascript:void(0)" ui-sref="header.Home.Dashboard">Dashboard</a></li>
+            <li  ui-sref-active="active"> <a href="javascript:void(0)" ui-sref="header.Home.Settings">Settings</a></li>
+            <li  ui-sref-active="active"> <a href="javascript:void(0)" ui-sref="header.Home.Monitoring">Monitoring</a></li>
+            <li  ui-sref-active="active"> <a href="javascript:void(0)" ui-sref="header.Home.Apps">Apps</a></li>
+        </uib-tabset>
+    </nav>
+            
+    <div class="main" ui-view></div>
+</div>

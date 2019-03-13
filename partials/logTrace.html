@@ -1,0 +1,121 @@
+<div>
+	<div class="col-sm-9 log-trace-padding-0px">
+		<div class="panel panel-default">
+    		<div class="panel-heading"><strong><h4>Search result</h4></strong></div>
+    		<table class="table table-hover">
+		        <thead>
+		            <tr>
+		              <th scope="col">Logged On</th>
+		              <th scope="col">Message</th>
+		              <th scope="col">Level</th>
+		              <th scope="col">Module</th>
+		              <th scope="col" >Source Component</th>
+		            </tr>
+		        </thead>
+		        <tbody ng-repeat = "log in logTraceVm.logs">
+		        	<tr >
+		        		<td>{{log.LoggedOn}}</td>
+		        		<td>{{log.Message}}..
+		        			<a href="javascript:void(0)" ng-click = "logTraceVm.showMoreMsg($index,'more')" ng-if = "!log.isShow">More</a>
+		        			<a href="javascript:void(0)" ng-click = "logTraceVm.showMoreMsg($index,'less')" ng-if = "log.isShow">Less</a>
+		        		</td>
+		        		<td>{{log.Level}}</td>
+		        		<td>{{log.Module}}</td>
+		        		<td>{{log.SourceComponent}}</td>
+		        	</tr>
+		        	<tr>
+        				<td colspan="6" ng-if = "log.isShow">
+	        				<uib-accordion close-others="oneAtATime">
+  								{{logTraceVm.message[$index]}}
+							</uib-accordion>
+        				</td>
+		        	</tr>
+		        </tbody>
+		    </table>
+        <div class="text-center" ng-if = "logTraceVm.error">
+          <h5><strong>{{logTraceVm.error.status}},{{logTraceVm.error.statusText}}</strong></h5>
+          <h6><strong>Please Try After Some Time</strong></h6>
+        </div>
+		    <ul class="pager" ng-if="logTraceVm.logs.length != 0">
+		    	<hr>
+    			<li><a href="javascript:void(0)" ng-click = "logTraceVm.getLogs()" ng-if="logTraceVm.hideNextBtn">Next</a></li>
+    			<li ng-if = "!logTraceVm.hideNextBtn">No more logs available</li>
+    		</ul>
+    	</div>
+	</div>
+	<div class="col-sm-3 log-filter-padding">
+		<div class="search-thumbnail">
+			<h4 style="margin: 0px;">
+        Filters
+        <button class="btn btn-primary pull-right" ng-click = "logTraceVm.getLogs()">Search</button>
+      </h4>
+			<hr>
+			<form name="LogTrace" novalidate>
+				<p class="form-group">
+    				<label>Module</label>
+    				<input type="text" class="form-control" ng-model="logTraceVm.log.module">
+  				</p>
+
+  				<p class="form-group">
+    				<label>Message search term</label>
+    				<input type="text" class="form-control" ng-model="logTraceVm.log.msgSrchTrm">
+  				</p>
+
+  				<p class="form-group">
+    				<label>Source component</label>
+    				<input type="text" class="form-control" ng-model="logTraceVm.log.srcComponent">
+  				</p>
+  				<p class="form-group">
+    				<label >Labels</label>
+    				<select name="label" multiple class="form-control" ng-model="logTraceVm.log.lebels" required>
+      					<option>ERROR</option>
+      					<option>DEBUG</option>
+    				</select>
+    				<span style="color:red" ng-show="LogTrace.label.$error.required">Please select labels its required field.</span>
+  				</p>
+  				<label>From date</label>
+  				<p class="input-group">
+                    <input type="text" class="form-control" uib-datepicker-popup="yyyy-MM-dd" ng-model = "logTraceVm.log.fromDate" is-open="logTraceVm.expandDatePicker.expandFormDatePicker" ng-change = "logTraceVm.makeActiveHrs()" datepicker-options="datepickerOptions" close-text="Close" alt-input-formats="altInputFormats"/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="logTraceVm.openDetPicker('fromDate')">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                        </button>
+                    </span>
+				</p>
+				<label>To date</label>
+  				<p class="input-group">
+                    <input type="text" class="form-control" uib-datepicker-popup="yyyy-MM-dd" ng-model = "logTraceVm.log.toDate" is-open="logTraceVm.expandDatePicker.expandToDatePicker" ng-change = "logTraceVm.makeActiveHrs()" datepicker-options="datepickerOptions" close-text="Close" alt-input-formats="altInputFormats"/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="logTraceVm.openDetPicker('toDate')">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                        </button>
+                    </span>
+				</p>
+				
+				
+				<label for="exampleFormControlSelect1"><strong>From Time in Hrs</strong></label>
+                <select  class="form-control" ng-model = "logTraceVm.fromHrs" ng-options = "hrs for hrs in logTraceVm.hrsArray" ng-disabled = "logTraceVm.disableFromHrs">
+                  <!-- <option selected>Hrs</option> -->
+                </select>
+              	
+              	<label for="exampleFormControlSelect1"><strong>From Time in Mins</strong></label>
+                <select  class="form-control" ng-model = "logTraceVm.fromMins" ng-options = "mins for mins in logTraceVm.minsArray" ng-disabled = "logTraceVm.disableFromHrs">
+                  <option selected>Mins</option>
+                </select>
+
+                <label for="exampleFormControlSelect1"><strong>To Time in Hrs</strong></label>
+                <select  class="form-control" ng-model = "logTraceVm.toHrs" ng-options = "hrs for hrs in logTraceVm.hrsArray" ng-disabled = "logTraceVm.disableToHrs">
+                  <!-- <option selected>Hrs</option> -->
+                </select>
+              	
+              	<label for="exampleFormControlSelect1"><strong>To Time in Mins</strong></label>
+                <select  class="form-control" ng-model = "logTraceVm.fromMins" ng-options = "mins for mins in logTraceVm.minsArray" ng-disabled = "logTraceVm.disableToHrs">
+                  <option selected>Mins</option>
+                </select>
+            	<br>
+            	<!-- <button class="btn btn-primary" ng-click = "logTraceVm.getLogs()">Search</button> -->
+	        </form>
+		</div>
+	</div>
+	
+</div>

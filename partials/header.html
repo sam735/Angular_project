@@ -1,0 +1,22 @@
+<div>
+    <div>
+        <div class="navbar navbar-default navbar-fixed-top border-none box-shadow-bottom-3px background-color-ffffff" role="navigation">
+            <div class="">
+                <div class="pull-left">
+                    <img src="images/jiva_logo.png" alt="Jiva" class="ZeOmega-logo pull-left" />
+                    <div class="pull-left padding-top-20px bold-text font-size-16px">ADAPTER FRAMEWORK ADMIN CONSOLE</div>
+                </div>
+                <div class="pull-right padding-right-15px" ng-if = "loginVM.hideLogoutButton">
+                    <div class="pull-left padding-top-20px">
+                        <button type="button" class="btn btn-primary"  ng-click = "loginVM.logOut()">logout</button>
+                    </div>
+                </div>
+                <!-- <div class="pull-right padding-right-15px">
+                    <img src="images/zeomega.png" alt="ZeOmega" class="ZeOmega-logo" />
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <div style="padding-top: 62px;" ui-view> </div>
+</div>   
+    
